@@ -10,7 +10,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-
 # powerline-shell
 function powerline_precmd() {
     PS1="$(powerline-shell --shell zsh $?)"
@@ -51,7 +50,6 @@ alias g++='g++ -Wall -O3 -I/usr/local/include'
 alias updatebrew="brew update && brew upgrade && brew cleanup && brew cask upgrade"
 alias zshrc="vim ~/.zshrc && source ~/.zshrc"
 
-# sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
 
 alias mergepdf="\"/System/Library/Automator/Combine PDF Pages.action/Contents/Resources/join.py\" -o"
