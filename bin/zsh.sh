@@ -3,10 +3,11 @@
 echo 'Configrating zsh...'
 
 git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
-cp -rf ./home/.zprezto/runcoms/* ~/.zprezto/runcoms
+
 setopt EXTENDED_GLOB
-for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-  ln -s "$rcfile" "~/.${rcfile:t}"
+for rcfile in `ls -1 ./home/.zprezto/runcoms`; do
+  cp -f "./home/.zprezto/runcoms/$rcfile" "$HOME/.zprezto/runcoms/"
+  ln -fs "$HOME/.zprezto/runcoms/$rcfile" "$HOME/.${rcfile:t}"
 done
 
 

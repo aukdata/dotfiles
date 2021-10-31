@@ -2,7 +2,7 @@
 
 echo 'Configrating node.js...'
 
-mkdir ~/.npm-packages
+mkdir -p "${HOME}/.npm-packages"
 npm install -g pnpm
 
 echo ""

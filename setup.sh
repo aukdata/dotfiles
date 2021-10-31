@@ -5,6 +5,8 @@ function abort() {
     exit 1
 }
 
+cd "${HOME}/dotfiles"
+
 if [ "$(uname)" == 'Darwin' ]; then
   export OS='macos'
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
@@ -16,10 +18,10 @@ fi
 echo "Operating system: ${OS}"
 echo ""
 
-~/dotfiles/bin/packages.sh
-~/dotfiles/bin/zsh.sh
-~/dotfiles/bin/git.sh
-~/dotfiles/bin/python.sh
-~/dotfiles/bin/nodejs.sh
+./bin/packages.sh
+./bin/zsh.sh
+./bin/git.sh
+./bin/python.sh
+./bin/nodejs.sh
 
 echo "Setup complete!"

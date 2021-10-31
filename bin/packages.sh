@@ -9,7 +9,7 @@ if [ "$OS" == 'macos' ]; then
 elif [ "$OS" == 'linux' ]; then
   sudo apt update || abort 'Unable to run apt'
   yes | sudo apt install tree nodejs npm zsh
-  chsh /usr/local/bin/zsh
+  chsh /bin/zsh
 fi
 
 echo ""
