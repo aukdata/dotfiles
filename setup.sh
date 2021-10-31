@@ -16,10 +16,10 @@ fi
 echo "Operating system: ${OS}"
 echo ""
 
-./bin/packages.sh
-./bin/zsh.sh
-./bin/git.sh
-./bin/python.sh
-./bin/nodejs.sh
+~/dotfiles/bin/packages.sh
+~/dotfiles/bin/zsh.sh
+~/dotfiles/bin/git.sh
+~/dotfiles/bin/python.sh
+~/dotfiles/bin/nodejs.sh
 
 echo "Setup complete!"
