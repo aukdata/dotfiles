@@ -5,7 +5,7 @@ function abort() {
     exit 1
 }
 
-cd "${HOME}/dotfiles"
+cd "$HOME/dotfiles"
 
 if [ "$(uname)" == 'Darwin' ]; then
   export OS='macos'
@@ -15,7 +15,7 @@ else
   abort "Your platform ($(uname -a)) is not supported."
 fi
 
-echo "Operating system: ${OS}"
+echo "Operating system: $OS"
 echo ""
 
 ./bin/packages.sh
