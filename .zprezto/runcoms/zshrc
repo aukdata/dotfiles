@@ -1,0 +1,80 @@
+
+# Prezto setting
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# complaint
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+    autoload -Uz compinit && compinit
+fi
+
+# correction
+setopt correct
+
+# history
+export HISTSIZE=1000
+export SAVEHIST=10000
+setopt share_history
+setopt hist_reduce_blanks
+setopt hist_ignore_all_dups
+
+# git branch on prompt
+autoload -Uz vcs_info
+setopt prompt_subst
+function precmd_vcs_info() { vcs_info }
+add-zsh-hook precmd precmd_vcs_info
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+zstyle ':vcs_info:*' formats "%F{green}%c%u%b%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+RPROMPT="\$vcs_info_msg_0_"
+
+# prompt
+autoload -Uz promptinit && promptinit
+autoload -U colors && colors
+PROMPT="%F{cyan}%n%f@%m:%B%~%b
+%# "
+
+function new_line_before_prompt() {
+    if [ -z "$NEW_LINE_BEFORE_PROMPT" ]; then
+        NEW_LINE_BEFORE_PROMPT=1
+    elif [ "$NEW_LINE_BEFORE_PROMPT" -eq 1 ]; then
+        echo ""
+    fi
+}
+add-zsh-hook precmd new_line_before_prompt
+
+
+# npm settings
+NPM_PACKAGES="${HOME}/.npm-packages"
+PATH="$NPM_PACKAGES/bin:$PATH"
+MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+
+
+# aliases
+alias ll='ls -l'
+alias la='ls -a'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias mkdir='mkdir -p'
+alias n='pnpm'
+alias x='pnpx'
+alias g='git'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+
+alias python='python3'
+alias pip='pip3'
+alias java='/Users/takuma/Library/Application\ Support/minecraft/runtime/java-runtime-alpha/mac-os/java-runtime-alpha/jre.bundle/Contents/Home/bin/java'
+alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py -o'
+alias atc='/Users/takuma/Documents/created/codes/atcoder/atcoder.sh'
+alias pyserver='python -m http.server 8000'
+alias g++='g++ -Wall -O3 -I/usr/local/include'
+alias updatebrew='brew update && brew upgrade && brew cleanup'
+alias zshrc='code ~/.zshrc && source ~/.zshrc'
