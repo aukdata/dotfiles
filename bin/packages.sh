@@ -8,7 +8,7 @@ if [ "$OS" == 'macos' ]; then
   brew install wget tree python node zsh-completions
 elif [ "$OS" == 'linux' ]; then
   sudo apt update || abort 'Unable to run apt'
-  yes | sudo apt install tree git-all nodejs npm zsh
+  yes | sudo apt install tree nodejs npm zsh
   chsh /usr/local/bin/zsh
 fi
 

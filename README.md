@@ -3,5 +3,5 @@
 ## Setup
 
 ```
-$ git clone https://github.com/aukdata/dotfiles.git ~/dotfiles && ~/dotfiles/setup.sh
+git clone https://github.com/aukdata/dotfiles.git ~/dotfiles && ~/dotfiles/setup.sh
 ```
