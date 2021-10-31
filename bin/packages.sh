@@ -9,7 +9,9 @@ if [ "$OS" == 'macos' ]; then
 elif [ "$OS" == 'linux' ]; then
   sudo apt update || abort 'Unable to run apt'
   yes | sudo apt install tree python3 python3-pip nodejs npm zsh
-  chsh -s /usr/local/bin/zsh `whoami`
+
+  command -v zsh | sudo tee -a /etc/shells
+  chsh -s $( command -v zsh )
 fi
 
 echo ""
